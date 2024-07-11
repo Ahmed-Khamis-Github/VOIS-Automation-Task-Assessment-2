@@ -156,4 +156,18 @@ public class SeatSelectionPage extends BasePage {
          return  driver.findElement(amountToPayAssertion).isDisplayed() ;
     }
 
+    public boolean passengerDetailsBtnIsDisplayed()
+    {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(passengerDetailsBtn));
+        return  driver.findElement(passengerDetailsBtn).isDisplayed() ;
+    }
+
+    public boolean nameTxtFieldIsDisplayed()
+    {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(passengerNameTxt));
+        return  driver.findElement(passengerNameTxt).isDisplayed() ;
+    }
+
 }

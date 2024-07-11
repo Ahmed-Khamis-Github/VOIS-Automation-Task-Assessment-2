@@ -1,0 +1,1 @@
+{"uuid":"54b858ee-86c2-47f1-91b6-83e6c160029e","name":"tests.SeatSelectionTest","children":["03b6efbd-ae28-4d43-9a94-b2b207e9d160"],"befores":[{"name":"setupTestData","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1720676169351,"stop":1720676169378}],"afters":[],"start":1720676169299,"stop":1720676182096}
