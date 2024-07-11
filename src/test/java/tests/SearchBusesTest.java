@@ -1,41 +1,54 @@
 package tests;
 
+import data.JsonReader;
+import org.json.simple.parser.ParseException;
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.SearchResultsPage;
 import pages.SeatSelectionPage;
 
-public class SearchBusesTest extends TestBase {
-    HomePage homeObject ;
-    SearchResultsPage searchResultsObject ;
+import java.io.IOException;
 
-    SeatSelectionPage seatSelectionObject ;
+public class SearchBusesTest extends TestBase {
+    HomePage homeObject;
+    SearchResultsPage searchResultsObject;
+    SeatSelectionPage seatSelectionObject;
+
+    String fromCity;
+    String toCity;
+    String departureDate;
+    String searchResultMessage;
+    String seatPageMessage;
+
+    @BeforeClass
+    public void setupTestData() throws IOException, ParseException {
+        fromCity = JsonReader.jsonData("TripData", "fromCity");
+        toCity = JsonReader.jsonData("TripData", "toCity");
+        departureDate = JsonReader.jsonData("TripData", "departureDate");
+        searchResultMessage = JsonReader.jsonData("Assertions", "searchResultMessage");
+        seatPageMessage = JsonReader.jsonData("Assertions", "seatPageMessage");
+    }
 
     @BeforeMethod
     public void setUp() {
         homeObject = new HomePage(driver);
-        searchResultsObject = new SearchResultsPage(driver) ;
-        seatSelectionObject = new SeatSelectionPage(driver) ;
-
+        searchResultsObject = new SearchResultsPage(driver);
+        seatSelectionObject = new SeatSelectionPage(driver);
     }
 
-    @Test()
+    @Test
     public void userCanSearchForTicket() throws InterruptedException {
-        homeObject.searchForAvailableTickets("Chikkamagaluru", "Bengaluru", "2024-08-2");
-         Assert.assertTrue(searchResultsObject.getSearchDetailsTxt().contains("Chikkamagaluru"));
+        homeObject.searchForAvailableTickets(fromCity, toCity, departureDate);
+        Assert.assertTrue(searchResultsObject.getSearchDetailsTxt().contains(searchResultMessage));
     }
 
-    @Test()
-    public  void userCanSelectTrip () throws InterruptedException {
-        homeObject.searchForAvailableTickets("Chikkamagaluru", "Bengaluru", "2024-08-2");
-         searchResultsObject.selectTrip();
-         Assert.assertTrue(seatSelectionObject.getSeatPageAssertionTxt().contains("Please select seat"));
-
+    @Test
+    public void userCanSelectTrip() throws InterruptedException {
+        homeObject.searchForAvailableTickets(fromCity, toCity, departureDate);
+        searchResultsObject.selectTrip();
+        Assert.assertTrue(seatSelectionObject.getSeatPageAssertionTxt().contains(seatPageMessage));
     }
-
-
-
-
 }
