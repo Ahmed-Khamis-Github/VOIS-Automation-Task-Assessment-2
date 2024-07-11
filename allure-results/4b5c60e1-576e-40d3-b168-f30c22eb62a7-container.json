@@ -1,0 +1,1 @@
+{"uuid":"4b5c60e1-576e-40d3-b168-f30c22eb62a7","name":"tests.SearchBusesTest.setUp","children":["69fa33ba-6610-4445-a606-f29f46b32673"],"description":"","befores":[{"name":"setUp","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1720612492204,"stop":1720612492207}],"afters":[],"start":1720612492204,"stop":1720612492207}
