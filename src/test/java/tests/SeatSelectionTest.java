@@ -1,10 +1,12 @@
 package tests;
 
 import data.JsonReader;
+import io.qameta.allure.Description;
+import io.qameta.allure.Story;
 import org.json.simple.parser.ParseException;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod; // Correct import for BeforeMethod
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.SearchResultsPage;
@@ -54,9 +56,9 @@ public class SeatSelectionTest extends TestBase {
         seatSelectionObject = new SeatSelectionPage(driver);
     }
 
-
-
-    @Test
+    @Story("Select Boarding Point")
+    @Description("User selects a boarding point on the seat selection page.")
+    @Test(description = "User can select boarding point")
     public void userCanSelectBoardingPoint() throws InterruptedException {
         homeObject.searchForAvailableTickets(fromCity, toCity, departureDate);
         searchResultsObject.selectTrip();
@@ -64,7 +66,9 @@ public class SeatSelectionTest extends TestBase {
         seatSelectionObject.selectBoardingPoint();
     }
 
-    @Test
+    @Story("Select Dropping Point")
+    @Description("User selects a dropping point on the seat selection page.")
+    @Test(description = "User can select dropping point")
     public void userCanSelectDroppingPoint() throws InterruptedException {
         homeObject.searchForAvailableTickets(fromCity, toCity, departureDate);
         searchResultsObject.selectTrip();
@@ -72,7 +76,9 @@ public class SeatSelectionTest extends TestBase {
         seatSelectionObject.selectDroppingPoint();
     }
 
-    @Test
+    @Story("Select Seat")
+    @Description("User selects an available seat on the seat selection page.")
+    @Test(description = "User can select seat")
     public void userCanSelectSeat() throws InterruptedException {
         homeObject.searchForAvailableTickets(fromCity, toCity, departureDate);
         searchResultsObject.selectTrip();
@@ -80,7 +86,9 @@ public class SeatSelectionTest extends TestBase {
         seatSelectionObject.selectAvailableSeat();
     }
 
-    @Test
+    @Story("Fill Trip Information")
+    @Description("User fills trip information including boarding point, dropping point, and seat selection.")
+    @Test(description = "User can fill trip information")
     public void userCanFillTripInfo() throws InterruptedException {
         homeObject.searchForAvailableTickets(fromCity, toCity, departureDate);
         searchResultsObject.selectTrip();
@@ -91,10 +99,11 @@ public class SeatSelectionTest extends TestBase {
         seatSelectionObject.navigateToPassengerDetails();
     }
 
-    @Test
+    @Story("Enter Customer Details")
+    @Description("User enters personal details like mobile number and email.")
+    @Test(description = "User can enter personal details")
     public void userCanEnterHisDetails() throws InterruptedException {
         homeObject.searchForAvailableTickets(fromCity, toCity, departureDate);
-
         searchResultsObject.selectTrip();
         Assert.assertTrue(seatSelectionObject.getSeatPageAssertionTxt().contains(seatPageMessage));
         seatSelectionObject.selectBoardingPoint();
@@ -104,12 +113,11 @@ public class SeatSelectionTest extends TestBase {
         seatSelectionObject.enterCustomerDetails(mobileNumber, email);
     }
 
-    @Test
+    @Story("Fill Checkout Details")
+    @Description("User fills checkout details including passenger information and verifies the pay button.")
+    @Test(description = "User can fill checkout details")
     public void userCanFillCheckoutDetails() throws InterruptedException {
-        System.out.println(departureDate);
         homeObject.searchForAvailableTickets(fromCity, toCity, departureDate);
-
-        searchResultsObject.selectTrip();
         Assert.assertTrue(seatSelectionObject.getSeatPageAssertionTxt().contains(seatPageMessage));
         seatSelectionObject.selectBoardingPoint();
         seatSelectionObject.selectDroppingPoint();

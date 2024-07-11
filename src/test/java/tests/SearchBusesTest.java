@@ -1,6 +1,8 @@
 package tests;
 
 import data.JsonReader;
+import io.qameta.allure.Description;
+import io.qameta.allure.Story;
 import org.json.simple.parser.ParseException;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
@@ -39,13 +41,17 @@ public class SearchBusesTest extends TestBase {
         seatSelectionObject = new SeatSelectionPage(driver);
     }
 
-    @Test
+    @Story("Search for Tickets")
+    @Description("User searches for available tickets from one city to another on a specific date.")
+    @Test(description = "User can search for available tickets")
     public void userCanSearchForTicket() throws InterruptedException {
         homeObject.searchForAvailableTickets(fromCity, toCity, departureDate);
         Assert.assertTrue(searchResultsObject.getSearchDetailsTxt().contains(searchResultMessage));
     }
 
-    @Test
+    @Story("Select Trip")
+    @Description("User selects a trip from the search results page.")
+    @Test(description = "User can select a trip")
     public void userCanSelectTrip() throws InterruptedException {
         homeObject.searchForAvailableTickets(fromCity, toCity, departureDate);
         searchResultsObject.selectTrip();

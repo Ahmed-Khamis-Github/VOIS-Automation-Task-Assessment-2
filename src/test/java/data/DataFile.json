@@ -15,6 +15,7 @@
     "idNumber": "5454"
   },
   "Assertions": {
-    "seatPageMessage": "Please select seat"
+    "seatPageMessage": "Please select seat",
+    "searchResultMessage": "Chikkamagaluru"
   }
 }
