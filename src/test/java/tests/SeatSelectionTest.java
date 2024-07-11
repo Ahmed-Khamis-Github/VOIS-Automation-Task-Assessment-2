@@ -56,6 +56,9 @@ public class SeatSelectionTest extends TestBase {
         seatSelectionObject = new SeatSelectionPage(driver);
     }
 
+
+
+
     @Story("Select Boarding Point")
     @Description("User selects a boarding point on the seat selection page.")
     @Test(description = "User can select boarding point")
@@ -65,6 +68,8 @@ public class SeatSelectionTest extends TestBase {
         Assert.assertTrue(seatSelectionObject.getSeatPageAssertionTxt().contains(seatPageMessage));
         seatSelectionObject.selectBoardingPoint();
     }
+
+
 
     @Story("Select Dropping Point")
     @Description("User selects a dropping point on the seat selection page.")
@@ -76,6 +81,8 @@ public class SeatSelectionTest extends TestBase {
         seatSelectionObject.selectDroppingPoint();
     }
 
+
+
     @Story("Select Seat")
     @Description("User selects an available seat on the seat selection page.")
     @Test(description = "User can select seat")
@@ -85,6 +92,7 @@ public class SeatSelectionTest extends TestBase {
         Assert.assertTrue(seatSelectionObject.getSeatPageAssertionTxt().contains(seatPageMessage));
         seatSelectionObject.selectAvailableSeat();
     }
+
 
     @Story("Fill Trip Information")
     @Description("User fills trip information including boarding point, dropping point, and seat selection.")
@@ -100,17 +108,13 @@ public class SeatSelectionTest extends TestBase {
         seatSelectionObject.navigateToPassengerDetails();
     }
 
+
+
     @Story("Enter Customer Details")
     @Description("User enters personal details like mobile number and email.")
     @Test(description = "User can enter personal details")
     public void userCanEnterHisDetails() throws InterruptedException {
-        homeObject.searchForAvailableTickets(fromCity, toCity, departureDate);
-        searchResultsObject.selectTrip();
-        Assert.assertTrue(seatSelectionObject.getSeatPageAssertionTxt().contains(seatPageMessage));
-        seatSelectionObject.selectBoardingPoint();
-        seatSelectionObject.selectDroppingPoint();
-        seatSelectionObject.selectAvailableSeat();
-        seatSelectionObject.navigateToPassengerDetails();
+       userCanFillTripInfo();
         seatSelectionObject.enterCustomerDetails(mobileNumber, email);
         Assert.assertTrue(seatSelectionObject.nameTxtFieldIsDisplayed());
     }
@@ -124,14 +128,7 @@ public class SeatSelectionTest extends TestBase {
     @Description("User fills checkout details including passenger information and verifies the pay button.")
     @Test(description = "User can fill checkout details")
     public void userCanFillPassengerDetails() throws InterruptedException {
-        homeObject.searchForAvailableTickets(fromCity, toCity, departureDate);
-        searchResultsObject.selectTrip();
-        Assert.assertTrue(seatSelectionObject.getSeatPageAssertionTxt().contains("Please select seat"));
-        seatSelectionObject.selectBoardingPoint();
-        seatSelectionObject.selectDroppingPoint();
-        seatSelectionObject.selectAvailableSeat();
-        seatSelectionObject.navigateToPassengerDetails();
-        seatSelectionObject.enterCustomerDetails(mobileNumber, email);
+        userCanEnterHisDetails() ;
         seatSelectionObject.enterPassengerDetails(name, gender, age, concession, idCard, idNumber);
         Assert.assertTrue(seatSelectionObject.payButtonIsDisplayedAssertion());
     }

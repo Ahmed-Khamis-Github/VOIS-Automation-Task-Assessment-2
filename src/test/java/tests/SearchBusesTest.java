@@ -53,7 +53,7 @@ public class SearchBusesTest extends TestBase {
     @Description("User selects a trip from the search results page.")
     @Test(description = "User can select a trip")
     public void userCanSelectTrip() throws InterruptedException {
-        homeObject.searchForAvailableTickets(fromCity, toCity, departureDate);
+        userCanSearchForTicket() ;
         searchResultsObject.selectTrip();
         Assert.assertTrue(seatSelectionObject.getSeatPageAssertionTxt().contains(seatPageMessage));
     }
