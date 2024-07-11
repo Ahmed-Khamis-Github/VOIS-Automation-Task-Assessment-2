@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Transport Regression Suite">
+    <test name="Regression Test" preserve-order="true">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="tests.SearchBusesTest"/>
+            <class name="tests.SeatSelectionTest"/>
+
+
+
+        </classes>
+    </test> <!-- Test -->
+
+
+</suite> <!-- Suite -->
