@@ -19,16 +19,7 @@ This Selenium automation framework is designed to automate the bus booking proce
    
 ![Image](Output.gif)
 
-## Features
-
-- Project uses Maven build tool
-- Proper coding standard followed
-- TestNG for Execution and Reporting 
-- TestNG annotations for undestandable test flow
-- XML based test configuration
-- Java 8 features used
-- Test data passing using POI API(Excel)
-- Used Selenium commands 
+ 
 
  ## Features
 
