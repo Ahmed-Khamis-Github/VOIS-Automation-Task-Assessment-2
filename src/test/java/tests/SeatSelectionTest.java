@@ -113,12 +113,18 @@ public class SeatSelectionTest extends TestBase {
         seatSelectionObject.enterCustomerDetails(mobileNumber, email);
     }
 
+
+
+
+
+
     @Story("Fill Checkout Details")
     @Description("User fills checkout details including passenger information and verifies the pay button.")
     @Test(description = "User can fill checkout details")
     public void userCanFillCheckoutDetails() throws InterruptedException {
         homeObject.searchForAvailableTickets(fromCity, toCity, departureDate);
-        Assert.assertTrue(seatSelectionObject.getSeatPageAssertionTxt().contains(seatPageMessage));
+        searchResultsObject.selectTrip();
+        Assert.assertTrue(seatSelectionObject.getSeatPageAssertionTxt().contains("Please select seat"));
         seatSelectionObject.selectBoardingPoint();
         seatSelectionObject.selectDroppingPoint();
         seatSelectionObject.selectAvailableSeat();
